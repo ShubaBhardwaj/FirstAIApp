@@ -28,3 +28,5 @@ Step5:-> for AI Part
         inngest
 
 Step6:-> Now we completed the Models of the Schema
+
+Step7:-> Now we make the utils for sending the the mail after user come in our database for suscessfully login
