@@ -30,3 +30,5 @@ Step5:-> for AI Part
 Step6:-> Now we completed the Models of the Schema
 
 Step7:-> Now we make the utils for sending the the mail after user come in our database for suscessfully login
+
+Step8:-> Now we make the inngest part in which we first make the client of it and then onSignup function (In this I learn how to make segmentad piplines and this pipline are connected to each other i can use the somthing from previous pipline also.)

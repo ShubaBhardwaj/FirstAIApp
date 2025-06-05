@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import { err } from "inngest/types";
 dotenv.config()
 
-export const sendMail = async (to,subject,body) => {
+export const sendMail = async (to,subject,text) => {
     try {
         const transporter = nodemailer.createTransport({
             host: process.env.MAILTRAP_SMTP_HOST,
@@ -16,11 +16,10 @@ export const sendMail = async (to,subject,body) => {
         });
     
         const info = await transporter.sendMail({
-        from: '"Maddison Foo Koch" <maddison53@ethereal.email>',
-        to: "bar@example.com, baz@example.com",
-        subject: "Hello ✔",
-        text: "Hello world?", // plain‑text body
-        html: "<b>Hello world?</b>", // HTML body
+        from: '" Ticketing app ',
+        to,
+        subject,
+        text,
       });
     
       console.log("Message sent:", info.messageId);
