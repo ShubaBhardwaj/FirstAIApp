@@ -6,8 +6,8 @@ import { NonRetriableError } from "inngest"
 import analyzTicket from "../../utils/AI.js"
 
 export const onticketCreated = inngest.createFunction(
-    {id: "ticket-created", retries: 2},
-    {event: "app/ticketCreated"},
+    {id: "on-ticket-created", retries: 2},
+    {event: "ticket/Created"},
     async({event, step})=>{
         try {
             const {ticketId} = event.data
