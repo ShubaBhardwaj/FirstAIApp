@@ -7,7 +7,7 @@ import Tickets from './pages/tickets.jsx'
 import TicketDetailsPage from './pages/ticket.jsx'
 import Login from './pages/login.jsx'
 import Signup from './pages/signup.jsx'
-import Admin from './pages/admin.jsx'
+import AdminPanel from './pages/admin.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -54,7 +54,7 @@ createRoot(document.getElementById('root')).render(
        path = '/admin'
        element={
         <CheckAuth protecte={true} >
-          <Admin/>
+          <AdminPanel/>
         </CheckAuth>
     }
       />
