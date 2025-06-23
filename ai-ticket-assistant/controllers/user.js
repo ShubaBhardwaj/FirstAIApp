@@ -6,7 +6,11 @@ import {inngest} from "../inngest/client.js"
 export const signup = async(req, res)=>{
     const {email , name , password, role, skills = []} = req.body;
     try {
-        const hashed = brcypt.hash(password,10)
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: "Email already registered" });
+        }
+        const hashed = await brcypt.hash(password,10)
         const user = User.create({name, email, password: hashed, role, skills})
 
         // Fire Inngest Event
@@ -32,7 +36,7 @@ export const login = async(req, res)=>{
     const{ email, password } = req.body
 
     try {
-        const user = User.findOne({email})
+        const user = await User.findOne({email})
         if(!user) return res.status(404).json({error:"Login Failed User not found"})
         
         const isMatch = await brcypt.compare(password, user.password);

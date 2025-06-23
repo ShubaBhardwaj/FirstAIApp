@@ -8,7 +8,7 @@ export const onSignup = inngest.createFunction(
     {event: "app/userSingup"},
     async({event, step})=>{
         try {
-            const email = event.email
+            const email = event.data.email
 
             // pipline 1
             const user = await step.run("get-user-email", async()=>{

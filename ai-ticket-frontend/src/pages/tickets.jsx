@@ -44,6 +44,8 @@ export default function Tickets() {
 
       const data = await res.json();
 
+      console.log(res.status, res.ok, data);
+
       if (res.ok) {
         setForm({ title: "", description: "" });
         fetchTickets(); // Refresh list

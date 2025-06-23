@@ -13,7 +13,7 @@ function Signup() {
   e.preventDefault()
   setLoading(true)
   try {
-    const response = fetch(`${import.meta.env.VITE_SERVER_URL}/auth/singup`,{
+    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/auth/singup`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,13 +21,14 @@ function Signup() {
       body: JSON.stringify(form)
     });
 
-    const data = (await response).json()
+    const data = await response.json()
     if (response.ok) {
       localStorage.setItem("token", data.token)
       localStorage.setItem("user", JSON.stringify(data.user))
       navigate("/")
     } else{
-      alert(data.message || "singup failde")
+      console.error("Error while singup",data.error)
+      alert(data.message || "singup failed")
     }
 
   } catch (error) {
@@ -41,7 +42,7 @@ function Signup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="card w-full max-w-sm shadow-xl bg-base-100">
-        <form onSubmit={handleSignup} className="card-body">
+        <form onSubmit={handleSingup} className="card-body">
           <h2 className="card-title justify-center">Sign Up</h2>
 
           <input

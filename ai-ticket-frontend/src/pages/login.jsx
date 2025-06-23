@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 
 
@@ -29,11 +29,12 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(data.user))
       navigate("/")
     } else{
-      alert(data.message || "singup failde")
+      alert(data.message || "Login failed")
+      navigate("/")
     }
 
   } catch (error) {
-    alert("singup - Somthing went wrong")
+    alert("login - Somthing went wrong")
   }
   finally{
     setLoading(false)

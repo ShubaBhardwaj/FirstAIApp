@@ -1,3 +1,10 @@
 import { Inngest } from "inngest";
+import dotenv from "dotenv"
 
-export const inngest = new Inngest({id: "ticketing-assistant"})
+dotenv.config()
+
+export const inngest = new Inngest({
+    id: "ticketing-assistant",
+    eventKey: process.env.INGGEST_EVENT_KEY 
+
+})
